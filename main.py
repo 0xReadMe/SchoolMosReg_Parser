@@ -3,6 +3,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from Screenshot import Screenshot_Clipping
 from methods.options import set_options
+from pyfiglet import Figlet
 import time
 import configparser
 import os
@@ -34,6 +35,7 @@ def extra_page_continue():
 def school_mos_reg():
     """Make screenshots at schoolmosreg and save it."""
     print('Попали на главную страницу школьного портала')
+    time.sleep(1.5)
 
     # Take a screenshot of main page and save it
     obs = Screenshot_Clipping.Screenshot()
@@ -71,10 +73,12 @@ def main():
         # Get the google.com
         driver.get('https://www.google.com/')
         print('Попали в поисковик')
+        time.sleep(1.5)
 
         # Enter a request
         driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input").send_keys('школьный портал')  # noqa
         print('Ввели "школьный портал"')
+        time.sleep(1.5)
 
         # CLick on the button "Find"
         driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[2]/div[2]/div[5]/center/input[1]').click()   # noqa
@@ -93,11 +97,13 @@ def main():
 
         # Enter a login at schoolmosreg
         loginning = driver.find_element(By.NAME, 'login')
+        time.sleep(1.5)
         loginning.send_keys(login)
         print('Ввели логин')
 
         # Enter a password at schoolmosreg
         passwording = driver.find_element(By.NAME, 'password')
+        time.sleep(1.5)
         passwording.send_keys(password)
         print('Ввели пароль')
 
@@ -112,6 +118,7 @@ def main():
             print('Попали на лишнюю страницу, производим перенаправление')
 
             #  Redirect to main page
+            time.sleep(1.5)
             continues = driver.find_element(By.XPATH, '/html/body/div/div[2]/div[4]/a')  # noqa
             continues.click()
 
@@ -132,6 +139,15 @@ def main():
 
         os.remove(dirpath + r'\geckodriver.log')
 
+
 if __name__ == '__main__':
+    f = Figlet(font="banner3-D")
+    little = f.renderText('Little')
+    f3ck = f.renderText('F3CK')
+    MosReg = f.renderText('MosReg')
+    print(little)
+    print(f3ck)
+    print(MosReg)
+
     main()
     a = input()
