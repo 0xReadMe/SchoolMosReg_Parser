@@ -23,7 +23,9 @@ driver = webdriver.Firefox(options=set_options())
 
 
 def extra_page_continue():
-    """Condition if an extra page comes out."""
+    """
+    Condition if an extra page comes out.
+    """
     try:
         #  Find extra page
         driver.find_element(By.XPATH, '/html/body/div/div[2]/div[4]/a')
@@ -33,7 +35,9 @@ def extra_page_continue():
 
 
 def school_mos_reg():
-    """Make screenshots at schoolmosreg and save it."""
+    """
+    Make screenshots at schoolmosreg and save it.
+    """
     print('Попали на главную страницу школьного портала')
     time.sleep(1.5)
 
@@ -76,7 +80,7 @@ def main():
         time.sleep(1.5)
 
         # Enter a request
-        driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input").send_keys('школьный портал')  # noqa
+        driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input").send_keys('школьный портал войти')  # noqa
         print('Ввели "школьный портал"')
         time.sleep(1.5)
 
@@ -87,7 +91,7 @@ def main():
 
         try:
             # CLick on the search query
-            driver.find_element(By.XPATH, '/html/body/div[7]/div/div[10]/div[1]/div/div[2]/div[2]/div/div/div[3]/div/div/div[1]/a/div/cite').click()  # noqa
+            driver.find_element(By.XPATH, '/html/body/div[7]/div/div[10]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/div/h3/a').click()  # noqa
             time.sleep(1.8)
             print('Нашли страницу входа в школьный портал')
         except Exception as exc:
